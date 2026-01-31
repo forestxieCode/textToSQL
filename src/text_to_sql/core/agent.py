@@ -4,7 +4,7 @@ LangGraph-based Text-to-SQL Agent
 This agent converts natural language questions to SQL queries and executes them.
 Refactored for better code readability, maintainability, and extensibility.
 """
-from typing import TypedDict, Sequence, Optional
+from typing import TypedDict, Sequence, Optional, Union
 from langgraph.graph import StateGraph, END
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
@@ -41,7 +41,7 @@ class AgentState(TypedDict):
     sql_query: str
     query_results: list  # List[Dict[str, Any]]
     error: str
-    messages: Sequence[HumanMessage | AIMessage | SystemMessage]
+    messages: Sequence[Union[HumanMessage, AIMessage, SystemMessage]]
     final_output: str
 
 
