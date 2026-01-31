@@ -9,10 +9,10 @@ from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.language_models import BaseLanguageModel
 
-from config import config
-from exceptions import SQLGenerationError
-from logger import logger
-from constants import SYSTEM_PROMPT_SQL_GENERATION, MARKDOWN_SQL_START, MARKDOWN_CODE_START, MARKDOWN_CODE_END
+from ..utils.config import config
+from ..utils.exceptions import SQLGenerationError
+from ..utils.logger import logger
+from ..utils.constants import SYSTEM_PROMPT_SQL_GENERATION, MARKDOWN_SQL_START, MARKDOWN_CODE_START, MARKDOWN_CODE_END
 
 
 class SQLGenerator(Protocol):

@@ -8,11 +8,11 @@ from typing import TypedDict, Sequence, Optional
 from langgraph.graph import StateGraph, END
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
 
-from database import db_manager
-from sql_generator import create_sql_generator
-from formatter import OutputFormatter
-from logger import logger
-from constants import (
+from ..database import db_manager
+from .sql_generator import create_sql_generator
+from ..utils.formatter import OutputFormatter
+from ..utils.logger import logger
+from ..utils.constants import (
     MSG_GENERATING_SQL,
     MSG_EXECUTING_SQL,
     MSG_FORMATTING_OUTPUT,
@@ -20,7 +20,7 @@ from constants import (
     MSG_QUERY_NO_RESULTS,
     MSG_ERROR_PREFIX
 )
-from exceptions import SQLGenerationError, SQLExecutionError
+from ..utils.exceptions import SQLGenerationError, SQLExecutionError
 
 
 class AgentState(TypedDict):

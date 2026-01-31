@@ -8,10 +8,10 @@ from typing import List, Dict, Any, Optional
 from sqlalchemy import create_engine, text, inspect, Engine
 from sqlalchemy.exc import SQLAlchemyError
 
-from config import config
-from exceptions import DatabaseError, SchemaRetrievalError, SQLExecutionError, UnsafeQueryError
-from logger import logger
-from constants import DANGEROUS_OPERATIONS
+from ..utils.config import config
+from ..utils.exceptions import DatabaseError, SchemaRetrievalError, SQLExecutionError, UnsafeQueryError
+from ..utils.logger import logger
+from ..utils.constants import DANGEROUS_OPERATIONS
 
 
 class DatabaseManager:
