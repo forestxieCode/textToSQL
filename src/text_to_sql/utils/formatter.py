@@ -6,7 +6,7 @@ and other outputs in a user-friendly way.
 """
 from typing import List, Dict, Any, Optional
 
-from constants import OUTPUT_TAB
+from .constants import OUTPUT_TAB
 
 
 class OutputFormatter:

@@ -4,9 +4,13 @@
 
 This is an intelligent agent built with LangGraph that converts natural language input to SQL queries and executes them to return results.
 
-> 🎉 **最新更新**: 代码已进行全面重构优化，提升了可读性、可维护性和可扩展性。详见 [OPTIMIZATION_SUMMARY.md](./OPTIMIZATION_SUMMARY.md)
+> 🎉 **最新更新**: 项目已按模块重新组织，结构更清晰！详见 [STRUCTURE.md](./STRUCTURE.md)
 > 
-> 🎉 **Latest Update**: Code has been comprehensively refactored for better readability, maintainability, and extensibility. See [OPTIMIZATION_SUMMARY.md](./OPTIMIZATION_SUMMARY.md)
+> 🎉 **Latest Update**: Project reorganized by modules for better structure! See [STRUCTURE.md](./STRUCTURE.md)
+
+> 📝 **优化历史**: 代码已进行全面重构优化，提升了可读性、可维护性和可扩展性。详见 [OPTIMIZATION_SUMMARY.md](./OPTIMIZATION_SUMMARY.md)
+> 
+> 📝 **Optimization History**: Code has been comprehensively refactored for better readability, maintainability, and extensibility. See [OPTIMIZATION_SUMMARY.md](./OPTIMIZATION_SUMMARY.md)
 
 ## ✨ 功能特点 / Features
 
@@ -37,14 +41,29 @@ User Input → Generate SQL → Execute SQL → Format Output
 3. **format_output**: 格式化输出结果
 
 **模块架构 / Module Architecture:**
-- `config.py` - 配置管理 / Configuration management
-- `constants.py` - 常量定义 / Constants definition
-- `exceptions.py` - 自定义异常 / Custom exceptions
-- `logger.py` - 日志系统 / Logging system
-- `database.py` - 数据库操作 / Database operations
-- `sql_generator.py` - SQL生成逻辑 / SQL generation logic
-- `formatter.py` - 输出格式化 / Output formatting
-- `text_to_sql_agent.py` - 主要工作流 / Main workflow
+
+```
+text_to_sql/
+├── src/text_to_sql/          # 核心包 / Core package
+│   ├── core/                 # 核心工作流 / Core workflow
+│   │   ├── agent.py          # 主工作流 / Main workflow agent
+│   │   └── sql_generator.py  # SQL生成逻辑 / SQL generation logic
+│   ├── database/             # 数据库模块 / Database module
+│   │   └── manager.py        # 数据库操作 / Database operations
+│   └── utils/                # 工具模块 / Utility module
+│       ├── config.py         # 配置管理 / Configuration management
+│       ├── constants.py      # 常量定义 / Constants definition
+│       ├── exceptions.py     # 自定义异常 / Custom exceptions
+│       ├── formatter.py      # 输出格式化 / Output formatting
+│       └── logger.py         # 日志系统 / Logging system
+├── scripts/                  # 脚本工具 / Scripts
+│   ├── cli.py                # 交互式命令行 / Interactive CLI
+│   ├── demo.py               # 演示脚本 / Demo script
+│   ├── init_database.py      # 数据库初始化 / Database initialization
+│   └── visualize_workflow.py # 工作流可视化 / Workflow visualization
+└── tests/                    # 测试 / Tests
+    └── test_database.py      # 数据库测试 / Database tests
+```
 
 ## 📦 安装 / Installation
 
@@ -129,11 +148,23 @@ Show top 3 most expensive products
 ### 作为 Python 模块使用 / Use as Python Module
 
 ```python
-from text_to_sql_agent import run_query
+from text_to_sql import run_query
 
-# 运行查询
+# 运行查询 / Run query
 result = run_query("显示所有用户")
 print(result)
+```
+
+或从特定模块导入 / Or import from specific modules:
+
+```python
+from text_to_sql.core import run_query
+from text_to_sql.database import db_manager
+from text_to_sql.utils import config, logger
+
+# 自定义配置 / Custom configuration
+logger.info("Starting query...")
+result = run_query("显示所有用户")
 ```
 
 ## 📝 示例 / Examples
