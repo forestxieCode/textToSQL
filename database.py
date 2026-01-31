@@ -81,7 +81,8 @@ class DatabaseManager:
                 
                 for column in columns:
                     column_info = f"  - {column['name']}: {column['type']}"
-                    if not column.get('nullable', True):
+                    # Add NOT NULL constraint if column is not nullable
+                    if column.get('nullable') is False:
                         column_info += " NOT NULL"
                     schema_parts.append(column_info)
             

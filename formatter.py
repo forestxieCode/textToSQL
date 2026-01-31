@@ -97,6 +97,10 @@ class OutputFormatter:
         """
         str_value = str(value) if value is not None else "NULL"
         
+        # Ensure max_width is reasonable before truncating
+        if max_width < 3:
+            max_width = 3
+        
         # Truncate if too long
         if len(str_value) > max_width:
             str_value = str_value[:max_width-3] + "..."

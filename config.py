@@ -71,6 +71,8 @@ class Config:
         if not self.database.url:
             return False
         
+        # Temperature must be between 0 and 2 (OpenAI API requirement)
+        # 0 = deterministic, 1 = balanced, 2 = maximum creativity
         if self.llm.temperature < 0 or self.llm.temperature > 2:
             return False
         

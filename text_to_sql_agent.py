@@ -31,7 +31,7 @@ class AgentState(TypedDict):
         user_input: The user's natural language question
         database_schema: Database schema information
         sql_query: Generated SQL query
-        query_results: Query execution results as list of dicts
+        query_results: Query execution results as list of dicts (List[Dict[str, Any]])
         error: Error message if any error occurred
         messages: Message history for conversation
         final_output: Formatted final output
@@ -39,7 +39,7 @@ class AgentState(TypedDict):
     user_input: str
     database_schema: str
     sql_query: str
-    query_results: list
+    query_results: list  # List[Dict[str, Any]]
     error: str
     messages: Sequence[HumanMessage | AIMessage | SystemMessage]
     final_output: str
