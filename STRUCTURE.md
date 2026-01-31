@@ -36,7 +36,6 @@ text_to_sql/
 ├── demo.py                       # Demo包装器 / Demo wrapper
 ├── init_database.py              # 初始化包装器 / Init wrapper
 ├── visualize_workflow.py         # 可视化包装器 / Visualize wrapper
-├── test_database.py              # 测试包装器 / Test wrapper
 ├── setup.py                      # 包安装配置 / Package setup configuration
 ├── requirements.txt              # 依赖项 / Dependencies
 ├── README.md                     # 主要文档 / Main documentation
@@ -130,7 +129,7 @@ python cli.py
 python demo.py
 python init_database.py
 python visualize_workflow.py
-python test_database.py
+python tests/test_database.py
 ```
 
 ### 方式 2: 作为 Python 包使用 / Method 2: Use as Python package

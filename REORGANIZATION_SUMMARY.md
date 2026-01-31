@@ -27,7 +27,6 @@ textToSQL/
 ├── demo.py                    # 演示
 ├── init_database.py           # 初始化数据库
 ├── visualize_workflow.py      # 可视化
-├── test_database.py           # 测试
 ├── requirements.txt
 ├── README.md
 └── OPTIMIZATION_SUMMARY.md
@@ -76,7 +75,6 @@ textToSQL/
 ├── demo.py                    # Demo包装器
 ├── init_database.py           # 初始化包装器
 ├── visualize_workflow.py      # 可视化包装器
-├── test_database.py           # 测试包装器
 ├── example_usage.py           # 使用示例
 ├── setup.py                   # 包安装配置
 ├── requirements.txt
@@ -170,7 +168,7 @@ textToSQL/
 - Functionality verification
 
 **文件 / Files:**
-- `test_database.py` - 数据库测试
+- `tests/test_database.py` - 数据库测试
 
 ## 🔧 使用方式变化 / Usage Changes
 
@@ -266,7 +264,7 @@ To ensure smooth transition, we kept wrapper scripts in root:
 All features have been tested:
 
 - ✅ `python demo.py` - 演示脚本正常工作
-- ✅ `python test_database.py` - 数据库测试通过
+- ✅ `python tests/test_database.py` - 数据库测试通过
 - ✅ `python visualize_workflow.py` - 可视化正常
 - ✅ `python example_usage.py` - 包导入正常
 - ✅ 所有模块可以正确导入和使用

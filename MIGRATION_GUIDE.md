@@ -163,7 +163,7 @@ print("✅ 数据迁移完成！/ Data migration completed!")
 ### 5.1 运行集成测试 / Run Integration Test
 
 ```bash
-python test_deepseek_supabase.py
+python tests/test_deepseek_supabase.py
 ```
 
 预期输出 / Expected output:

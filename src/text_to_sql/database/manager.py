@@ -4,9 +4,11 @@ Database operations for the Text-to-SQL agent.
 This module encapsulates all database-related functionality,
 including schema retrieval and query execution.
 """
+import warnings
 from typing import List, Dict, Any, Optional
 from sqlalchemy import create_engine, text, inspect, Engine
 from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy import exc as sa_exc
 
 from ..utils.config import config
 from ..utils.exceptions import DatabaseError, SchemaRetrievalError, SQLExecutionError, UnsafeQueryError
@@ -77,10 +79,25 @@ class DatabaseManager:
             
             for table_name in table_names:
                 schema_parts.append(f"\nTable: {table_name}")
-                columns = inspector.get_columns(table_name)
+                # Suppress warnings for unknown types (e.g., pgvector's 'vector' type)
+                with warnings.catch_warnings():
+                    warnings.filterwarnings('ignore', category=sa_exc.SAWarning, 
+                                          message='Did not recognize type')
+                    columns = inspector.get_columns(table_name)
                 
                 for column in columns:
-                    column_info = f"  - {column['name']}: {column['type']}"
+                    # Handle unknown types gracefully (e.g., vector, custom types)
+                    column_type = column['type']
+                    if hasattr(column_type, '__str__'):
+                        # Convert type to string, handling unknown types
+                        try:
+                            type_str = str(column_type)
+                        except Exception:
+                            type_str = 'UNKNOWN'
+                    else:
+                        type_str = str(column_type) if column_type else 'UNKNOWN'
+                    
+                    column_info = f"  - {column['name']}: {type_str}"
                     # Add NOT NULL constraint if column is not nullable
                     if column.get('nullable') is False:
                         column_info += " NOT NULL"

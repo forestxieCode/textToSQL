@@ -64,7 +64,7 @@
   - 最佳实践建议
 
 #### 测试 / Tests
-- `test_deepseek_supabase.py` - 新增集成测试
+- `tests/test_deepseek_supabase.py` - 新增集成测试
   - 配置验证
   - 组件初始化测试
   - 环境变量状态检查

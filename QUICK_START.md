@@ -67,7 +67,7 @@ print(schema)
 
 ```bash
 # 数据库测试 / Database tests
-python test_database.py
+python tests/test_database.py
 
 # 可视化工作流 / Visualize workflow
 python visualize_workflow.py
@@ -133,7 +133,7 @@ python cli.py
 python demo.py
 python init_database.py
 python visualize_workflow.py
-python test_database.py
+python tests/test_database.py
 
 # 方式2: 从scripts目录 / Method 2: From scripts directory
 python scripts/cli.py

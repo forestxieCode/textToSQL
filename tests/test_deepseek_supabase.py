@@ -8,8 +8,8 @@ with DeepSeek LLM and Supabase database.
 import os
 import sys
 
-# Add src to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+# Add src to path (from tests directory, go up one level to project root)
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 def test_configuration():
     """Test that configuration loads correctly."""
